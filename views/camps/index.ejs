@@ -1,7 +1,9 @@
 
     <% layout('../layouts/boilerplate') %> 
     <div id="cluster-map"></div>
+    <% if( data.length>0) { %> 
     <h1>Registered Camps</h1>
+    <% } %> 
         <% data.forEach(el => { %>
             <div class="card mt-2 mb-3" style="width: 25rem;">
                 <div class="container-fluid">
