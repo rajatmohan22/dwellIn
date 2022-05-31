@@ -1,0 +1,42 @@
+
+    <% layout('../layouts/boilerplate') %> 
+    <div id="cluster-map"></div>
+    <h1>Registered Camps</h1>
+        <% data.forEach(el => { %>
+            <div class="card mt-2 mb-3" style="width: 25rem;">
+                <div class="container-fluid">
+                    <div class="row">
+                        <% if(el.images.length>0){ %> 
+                        <img class="card-img-top" src="<%=el.images[0].url%>" alt="camp image">
+                        <% } else {%>
+                            <img src="https://res.cloudinary.com/dx1e7lfrf/image/upload/v1653916434/dwellIn/oltuu8kyha4u94twstbz.jpg" alt="camp image">
+                            <% } %> 
+                    <div class="card-body"> 
+                      <p class="card-text">
+                     <h4>
+                         <%= el.name %> 
+                     </h4>
+                        <p class="text-muted">
+                            <%= el.location %> 
+                        </p>
+                        <a href="/camps/<%= el.id %> ">
+                            <button class="btn btn-primary">View</button>
+                        </a>
+                        
+                      </p>
+                    </div>
+    
+                    </div>
+
+                </div>
+                
+                
+              </div>
+       <% }); %>
+       <script>
+        const campdata = <%-JSON.stringify(data)%> 
+      </script>
+       <script src="/javascripts/clusterMap.js"></script>
+
+
+    

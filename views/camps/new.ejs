@@ -1,0 +1,113 @@
+
+    <% layout('../layouts/boilerplate') %>
+    <title>
+        New Camp
+    </title>
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 offset-md-4 col-xl-6 offset-xl-3">
+                <h1 class="mb-3">
+                    Create Camp
+                </h1>
+                <form class="needs-validation" action="/camps" method="post" novalidate enctype="multipart/form-data">
+                    <div class="form-group mb-3">
+                        <label class="form-label" for="nameofcamp">Title: </label>
+                        <input class="form-control" type="text" id="nameofcamp" name="camp[name]" required>
+                        <div class="valid-feedback">
+                            Cool!
+                        </div>
+
+                        <div class="invalid-feedback">
+                            Pathetic, no name? 
+                        </div>
+                    </div>
+                
+                    <div class="form-group mb-3">
+                        <label class="form-label" for="camplocation">Location: </label>
+                        <input class="form-control" type="text" id="camplocation" name="camp[location]" required>
+                        <div class="valid-feedback">
+                            Cool!
+                        </div>
+
+                        <div class="invalid-feedback">
+                            Cool and all..but where is the camp located again? 
+                        </div>
+                    
+                    </div>
+
+                    <div class="mb-3">
+                            <label class="sr-only" for="inlineFormInputGroup">Price:</label>
+                            <div class="input-group mb-2">
+                              <div class="input-group-prepend">
+                                <div class="input-group-text">$</div>
+                              </div>
+                              <input type="text" class="form-control" name="camp[price]" id="inlineFormInputGroup" placeholder="Price" required>
+                            
+                              <div class="valid-feedback">
+                                Cool!
+                            </div>
+
+                            <div class="invalid-feedback">
+                                This is not a free country hahah 
+                            </div>
+                            
+                            </div>
+
+                            
+                    </div>
+
+                    
+
+                    <!-- <div class="form-group mb-3">
+                        <label class="form-label" for="campimg">Image URL (if any)</label>
+                        <input class="form-control" type="text" id="campimg" name="camp[image]" required>
+                        <div class="valid-feedback">
+                            Cool!
+                        </div>
+
+                        <div class="invalid-feedback">
+                            Come on, I'm sure it doesn't look that bad xD
+                        </div>
+
+                    
+                    </div> -->
+
+                    <div class="form-group mb-3">
+                        <label class="form-label" for="desc">Descreption: </label>
+                        <textarea name="camp[desc]" id="desc" cols="30" placeholder="Give a brief about your camp!" rows="10" class="form-control" required></textarea>
+                        <div class="valid-feedback">
+                            Cool!
+                        </div>
+                        <div class="invalid-feedback">
+                            Lmao, Dont you have anything to say about your camp?
+                        </div>
+                    
+                    </div>
+
+                    <div class="form-control mb-3">
+                        <label for="formFile" class="form-label">Showoff Your Camp ;)</label>
+                        <input name="image" class="form-control" type="file" id="image" multiple>
+                      </div>
+                
+                    <!-- <div class="form-group">
+                        <label for="location">P</label>
+                        <input type="text" id="location" name="camp[location]">
+                
+                    </div> -->
+
+                    <button class="btn btn-success mt-2 mb-2">Create</button>
+                </form>
+
+                <footer class="mb-3">
+                    <a href="/camps">All Camps</a>
+                </footer>
+
+            </div>
+            
+        </div>
+
+    </div>
+   
+
+

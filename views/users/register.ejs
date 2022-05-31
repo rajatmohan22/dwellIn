@@ -1,0 +1,72 @@
+<% layout('../layouts/boilerplate') %>
+
+
+<div class="container d-flex justify-content-center align-items-center my-auto mt-2 mb-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 col-xl-8 offset-xl-2">
+            <div class="card shadow">
+                <img class="card-img-top"
+                    src="https://images.unsplash.com/photo-1472553384749-8596bacb90c5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                    alt="/loginImg">
+                <div class="card-body">
+
+
+                    <h1 class="card-title display-3 text-sm">
+                        Resgister
+                    </h1>
+                    <form action="/register" class=" form-group needs-validation mb-3 mt-3" method="post" novalidate>
+                        <div class="mb-3">
+                            <div class="blockquote-footer display-4 mt-3">There's Home For All of us...</div>
+                            <label for="email">Email Address</label>
+                            <input class="form-control" type="email" name="email" id="email" required>
+                            <div class="valid-feedback">
+                                Nice
+                            </div>
+                
+                            <div class="invalid-feedback">
+                                Duh? Enter a valid email
+                            </div>
+                        </div>
+                
+                        <div class="mb-3">
+                            <label for="username">Username</label>
+                            <input class="form-control" type="text" name="username" id="username" required>
+                            <div class="valid-feedback">
+                                Nice
+                            </div>
+                
+                            <div class="invalid-feedback">
+                                Valid username please?
+                            </div>
+                
+                        </div>
+                        
+                        
+                        <div class="mb-3">
+                            <label for="pwd">Password</label>
+                            <input class="form-control" type="password" name="password" id="pwd" required>
+                            <div class="valid-feedback">
+                                Nice
+                            </div>
+                
+                            <div class="invalid-feedback">
+                                I'm sure you know what's at stake here
+                            </div>
+                
+                        </div>
+                        
+                        <div class="d-grid">
+                            <button class="btn btn-success" type="submit">
+                                Sign Me Up!
+                            </button>                          
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

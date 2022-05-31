@@ -1,0 +1,149 @@
+<% layout('../layouts/boilerplate') %>
+  <link rel="stylesheet" href="/stylesheets/starrating.css">
+
+  <div class="container">
+
+    
+    
+    <div class="row">
+      <div class="col-6 mb-3 mt-3">
+        
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <% foundCamp.images.forEach(function(image,i) { %>
+              <div class="img-thumbnail carousel-item<%= (i===0)?' active':'' %>">
+                <img class="d-block w-100" src="<%=image.url%>" alt="Camp Img">
+              </div>
+              <% }) %>
+          </div>
+          <% if(foundCamp.images.length>1){ %>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+              data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+              data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+            <% } %>
+        </div>
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title">
+              <%= foundCamp.name %>
+            </h5>
+            <p class="card-text text-muted">
+              <%= foundCamp.location %>
+            </p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">$<%= foundCamp.price %>/Night</li>
+            <li class="list-group-item">
+              <%= foundCamp.desc %>
+            </li>
+          </ul>
+          <% if(currUser&&currUser._id.equals(foundCamp.author._id)){ %>
+            <div class="card-body">
+              <a href="/camps" class="btn btn-info card-link text-light" style="text-decoration: none;">Back</a>
+              <a href="/camps/<%= foundCamp._id %>/edit" class="card-link btn btn-info text-light">Edit Camp</a>
+
+
+              <form action="/camps/<%= foundCamp._id %>?_method=DELETE" method="post">
+                <button type="submit" class="btn btn-danger mt-1">DELETE</button>
+              </form>
+            </div>
+            <% } %>
+              <div class="card-footer text-muted">
+                  Owned By: <%= foundCamp.author.username %>
+              </div>
+
+        </div>
+
+
+      </div>
+      <div class="col-6 mt-3 mb-3">
+        <div id='map'></div>
+
+      <% if(currUser){ %>
+        
+          
+          <h2 class="display-4 mb-3 mt-3">
+            Leave A Review
+          </h2>
+          <form class="mb-3 needs-validation" action="/camps/<%=foundCamp._id%>/review" method="post" novalidate>
+            <div class="mb-3">
+              <fieldset class="starability-basic">
+                <h5>Rate Your Experience</h5>
+                <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked
+                  aria-label="No rating." />
+                <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+                <label for="first-rate1" title="Terrible">1 star</label>
+                <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                <label for="first-rate2" title="Not good">2 stars</label>
+                <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                <label for="first-rate3" title="Average">3 stars</label>
+                <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                <label for="first-rate4" title="Very good">4 stars</label>
+                <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                <label for="first-rate5" title="Amazing">5 stars</label>
+              </fieldset>
+            </div>
+            <div class="mb-3 form-group">
+              <label class="form-label" for="reviewbody">Review</label>
+              <textarea placeholder="<%= currUser.username %> says... " class="form-control" name="review[body]"
+                id="reviewbody" cols="30" rows="3" required></textarea>
+              <div class="invalid-feedback">C'mmon Tell us how you felt...</div>
+              <div class="valid-feedback">Nice</div>
+            </div>
+            <button class="btn btn-success" type="submit">Add Review</button>
+          </form>
+
+          <% if(foundCamp.review.length>0) {%>
+            <h3 class="display-4">
+              Other Reviews
+            </h3>
+            <% } %>
+
+              <% foundCamp.review.forEach(function(camp) { %>
+                <div class="card mb-3">
+
+                  <div class="card-body">
+                    <h5>
+                      <%= camp.author.username %>
+                    </h5>
+                    <p class="starability-result" data-rating="<%= camp.rating %>">
+                      Rated: <%= camp.rating %> stars
+                    </p>
+                    <p>
+                      <%= camp.body %>
+                    </p>
+                    <% %>
+                      <% if(currUser._id.equals(camp.author._id)) {%>
+
+                        <form class="mt-2 mb-3" action="/camps/<%=foundCamp.id%>/review/<%=camp.id%>?_method=DELETE"
+                          method="post">
+                          <button class="btn btn-sm btn-danger mb-2" type="submit">
+                            Delete
+                          </button>
+                        </form>
+                        <% } %>
+
+                  </div>
+                </div>
+
+                <% }); %>
+
+        </div>
+        <% } %>
+    </div>
+  </div>
+<script>
+  const foundCamp = <%-JSON.stringify(foundCamp)%> ////This error can be ignored.
+</script>
+<script>
+   ////This error can be ignored.
+</script>
+
+<script src="/javascripts/showMap.js"></script>
