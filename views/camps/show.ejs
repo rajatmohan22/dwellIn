@@ -46,10 +46,7 @@
           </ul>
           <% if(currUser&&currUser._id.equals(foundCamp.author._id)){ %>
             <div class="card-body">
-              <a href="/camps" class="btn btn-info card-link text-light" style="text-decoration: none;">Back</a>
               <a href="/camps/<%= foundCamp._id %>/edit" class="card-link btn btn-info text-light">Edit Camp</a>
-
-
               <form action="/camps/<%= foundCamp._id %>?_method=DELETE" method="post">
                 <button type="submit" class="btn btn-danger mt-1">DELETE</button>
               </form>

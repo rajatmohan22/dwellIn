@@ -9522,7 +9522,7 @@ dataArray.forEach((element,i) => {
     element.name+=" Stay";
     element.desc = reviewArray[Math.floor(Math.random()*5)];
     element.price = Math.floor(Math.random()*500+1)
-    element.author = "629600f5c1945fd3dd6a1141";
+    element.author = "62963602a051e25628fa4b9f";
     element.location = cities1000[randomno].city +", "+cities1000[randomno].state
     element.images=    [{
         url: 'https://res.cloudinary.com/dx1e7lfrf/image/upload/v1653866456/dwellIn/xpcpadd6onps7sb9emlv.jpg',

@@ -1,7 +1,8 @@
 // const express = require('express');
+require('dotenv').config();
 const mongoose = require('mongoose');
 // const app = express();
-mongoose.connect('mongodb://localhost:27017/dwellDB');
+mongoose.connect(process.env.ATLAS_URI);
 const db = mongoose.connection;
 db.once("open",()=>{
     console.log("Database connected.")
