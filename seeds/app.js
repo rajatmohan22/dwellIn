@@ -29,3 +29,13 @@ seedDB()
 .catch(()=>{
     console.log('unable to close')
 })
+
+
+
+
+<Card
+        name={contact.name}
+        url={contact.imgURL}
+        phone={contact.phone}
+        email={contact.email}
+      />

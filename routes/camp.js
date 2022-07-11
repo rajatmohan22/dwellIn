@@ -44,3 +44,9 @@ router.route('/:campId/review/:reviewId')
 .delete(ensureLogin,wrapAsync(campcontrol.deleteReview));
 
 module.exports = router;
+const uri = ""
+
+const client = new MongoClient(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
